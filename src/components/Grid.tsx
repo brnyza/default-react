@@ -84,11 +84,11 @@ const Td:React.FC = ({children, ...props}) => {
 
 export { Td }
 
-const Tr:React.FC = ({children, ...props}) => {
+const Tr:React.FC<any> = ({children, className, ...props}) => {
     return (
-        <td className="hover:bg-gray-200" {...props}>
+        <tr className={`hover:bg-gray-200 ${className || ''}`} {...props}>
             {children}
-        </td>
+        </tr>
     )
 }
 
