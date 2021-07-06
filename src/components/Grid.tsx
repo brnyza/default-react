@@ -83,3 +83,20 @@ const Td:React.FC = ({children}) => {
 }
 
 export { Td }
+
+interface HeaderProps extends InputHTMLAttributes<HTMLInputElement> {
+    title: string
+}
+
+const Header:React.FC<HeaderProps> = ({title, children}) => {
+    return (
+        <header className="flex w-full justify-between">
+            <h1 className="text-2xl font-bold mb-8">{title}</h1>
+            <div className="flex gap-2">
+                {children}
+            </div>
+        </header>
+    )
+}
+
+export { Header }
