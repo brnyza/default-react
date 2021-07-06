@@ -74,15 +74,25 @@ const Grid: React.FC<InputProps> =  ({ titles, children, loading }) => {
 export { Grid }
 
 
-const Td:React.FC = ({children}) => {
+const Td:React.FC = ({children, ...props}) => {
     return (
-        <td className="pl-4 py-4 whitespace-nowrap">
+        <td className="pl-4 py-4 whitespace-nowrap" {...props}>
             {children}
         </td>
     )
 }
 
 export { Td }
+
+const Tr:React.FC = ({children, ...props}) => {
+    return (
+        <td className="hover:bg-gray-200" {...props}>
+            {children}
+        </td>
+    )
+}
+
+export { Tr }
 
 interface HeaderProps extends InputHTMLAttributes<HTMLInputElement> {
     title: string
