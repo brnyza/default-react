@@ -54,7 +54,7 @@ const Select:React.FC<InputProps> = ({ label, items, name, defaultValue, returnI
                     left-20
                     w-0
                     border-b-2
-                    border-blue-500
+                    border-yellow-500
                     transition-all
                     ${ (selected) && 'w-full -left-px'}
                 `}
@@ -71,7 +71,7 @@ const Select:React.FC<InputProps> = ({ label, items, name, defaultValue, returnI
                 className="
                     absolute bg-transparent 
                     bottom-0 w-full h-full cursor-pointer"
-                value={returnId ? getIdByValue() : defaultValue}    
+                defaultValue={returnId ? getIdByValue() : defaultValue}    
                 >
                 <option>
                     -

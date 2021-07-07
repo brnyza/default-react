@@ -14,7 +14,7 @@ const Grid: React.FC<InputProps> =  ({ titles, children, loading }) => {
                         titles.map( title => (
                             <th 
                                 scope="col"
-                                className="pl-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                className="pl-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                 key={`${title}`}>
                                 {title}
                             </th>
@@ -74,9 +74,9 @@ const Grid: React.FC<InputProps> =  ({ titles, children, loading }) => {
 export { Grid }
 
 
-const Td:React.FC = ({children, ...props}) => {
+const Td:React.FC<InputHTMLAttributes<HTMLInputElement> | any> = ({children, className,...props}) => {
     return (
-        <td className="pl-4 py-4 whitespace-nowrap" {...props}>
+        <td className={`pl-3 py-3 ${className}`} {...props}>
             {children}
         </td>
     )
@@ -84,7 +84,7 @@ const Td:React.FC = ({children, ...props}) => {
 
 export { Td }
 
-const Tr:React.FC<any> = ({children, className, ...props}) => {
+const Tr:React.FC<InputHTMLAttributes<HTMLInputElement> | any> = ({children, className, ...props}) => {
     return (
         <tr className={`hover:bg-gray-200 ${className || ''}`} {...props}>
             {children}
@@ -100,8 +100,8 @@ interface HeaderProps extends InputHTMLAttributes<HTMLInputElement> {
 
 const Header:React.FC<HeaderProps> = ({title, children}) => {
     return (
-        <header className="flex w-full justify-between">
-            <h1 className="text-2xl font-bold mb-8">{title}</h1>
+        <header className="flex w-full justify-between items-center mb-4">
+            <h1 className="text-2xl font-bold">{title}</h1>
             <div className="flex gap-2">
                 {children}
             </div>

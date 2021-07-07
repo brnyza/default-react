@@ -1,11 +1,11 @@
 import React, { InputHTMLAttributes } from 'react'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-    onChange: any
+    closeModal(value: boolean): void
     maxSize: string
 }
 
-const Modal:React.FC<InputProps> = ({ children, onChange, maxSize }) => {
+const Modal:React.FC<InputProps> = ({ children, closeModal, maxSize, ...props }) => {
     return (
         <div 
             className="
@@ -18,7 +18,7 @@ const Modal:React.FC<InputProps> = ({ children, onChange, maxSize }) => {
                 z-20
             " >
             <div
-                onClick={ () => onChange(false) } 
+                onClick={ () => closeModal(false) } 
                 className="
                     bg-black
                     opacity-40 
@@ -34,7 +34,9 @@ const Modal:React.FC<InputProps> = ({ children, onChange, maxSize }) => {
                     w-full
                     rounded-2xl
                     max-w-${maxSize}
-                `}>
+                `}
+                {...props}
+                >
                 {children}
             </div>    
         </div>
