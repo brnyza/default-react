@@ -6,7 +6,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 const Grid: React.FC<InputProps> =  ({ titles, children, loading }) => {
     return (
-        <div className="border border border-gray-200 rounded-xl w-full overflow-hidden shadow">
+        <div className="border border border-gray-200 rounded w-full overflow-hidden shadow">
            <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
@@ -100,10 +100,10 @@ interface HeaderProps extends InputHTMLAttributes<HTMLInputElement> {
 
 const Header:React.FC<HeaderProps> = ({title, children}) => {
     return (
-        <header className="flex w-full justify-between items-center mb-4">
+        <header className="flex w-full justify-between flex-col mb-4">
             <h1 className="text-2xl font-bold">{title}</h1>
-            <div className="flex gap-2">
-                {children}
+            <div className="flex gap-2 mt-2">
+                {children} 
             </div>
         </header>
     )

@@ -1,4 +1,5 @@
-import { Grid, Td } from "../../components/Grid"
+import { BtnNovo, Button } from "../../components/Button"
+import { Grid, Header, Td } from "../../components/Grid"
 
 const Example: React.FC = () => {
 
@@ -10,7 +11,10 @@ const Example: React.FC = () => {
 
   return (
     <main className="w-full flex justify-center mt-10">
-        <div className="w-full max-w-lg">
+        <div className="w-full max-w-4xl">
+           <Header title="Grid teste">
+             <BtnNovo/>
+           </Header>
             <Grid titles={['Nome', 'Função', 'Modulo']}>
                 { dados.map( dado => (
                   <tr>

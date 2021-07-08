@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import { MdAdd } from 'react-icons/md'
 
 const Button: React.FC<any> = ({children, className, noStyle, hint, ...props}) => {
 
@@ -8,7 +9,7 @@ const Button: React.FC<any> = ({children, className, noStyle, hint, ...props}) =
   return (
     <div 
       className={` 
-        ${ !noStyle ? 'bg-red-500 text-white w-24 h-10 rounded-full' : ' ' } flex 
+        ${ !noStyle ? 'bg-red-500 text-white w-24 h-10 rounded' : ' ' } flex 
         justify-center items-center 
         cursor-pointer relative ${className}`} 
       {...props}
@@ -29,4 +30,13 @@ const Button: React.FC<any> = ({children, className, noStyle, hint, ...props}) =
 )
 }
 
-export {Button}
+const BtnNovo: React.FC = () => {
+  return (
+    <Button className="bg-green-500 flex gap-2 items-center justify-center">
+      Novo
+      <MdAdd className="text-xl"/>
+    </Button>
+  )
+}
+
+export {Button, BtnNovo}
