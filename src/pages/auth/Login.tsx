@@ -39,6 +39,8 @@ const Login: React.FC = () => {
                 <h1 className="flex justify-center text-4xl font-bold tracking-widest text-blue-500 mb-10">Blue Marble</h1>
                 <Input name="email" type="email" required/>
                 <Input name="password" type="password"/>
+                <Input name="Valor" type="precision" decimalsLimit={2} prefix="R$" />
+                <Input name="Valor" type="text" mask="R$ 99,99" />
                 <LargeButton title="Login" isLoading={loading} />
             </form>
         </div>

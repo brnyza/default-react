@@ -3,6 +3,7 @@ import { MdAttachFile } from 'react-icons/md'
 import { useEffect } from "react"
 import { useRef } from "react"
 import InputMask from "react-input-mask"
+import CurrencyInput from 'react-currency-input-field'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     name: string
@@ -11,9 +12,11 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     url?: string
     defaultValue?: string
     mask?: string
+    prefix?: string
+    decimalsLimit?: number
 }
 
-const Input: React.FC<InputProps> = ({ name, type, label, url, defaultValue, mask, ...props }) => {
+const Input: React.FC<InputProps> = ({ name, type, label, url, defaultValue, prefix, decimalsLimit, mask, ...props }) => {
     const [focused, setFocused] = useState(false)
     const [value, setValue] = useState('')
     let refValue = useRef<any>()
@@ -112,7 +115,7 @@ const Input: React.FC<InputProps> = ({ name, type, label, url, defaultValue, mas
                     </>
                 }
                 { 
-                    (!mask && type !== 'file') &&   
+                    (!mask && type !== 'file' && type !== 'precision') &&   
                     <input 
                         ref={refValue}
                         onFocus={
@@ -140,6 +143,38 @@ const Input: React.FC<InputProps> = ({ name, type, label, url, defaultValue, mas
                         name={name}
                         />
                 }
+
+                    {
+                        (type === "precision") &&
+                        <CurrencyInput 
+                            onFocus={
+                                () => setFocused(true)
+                            } 
+                            onBlur={
+                                () => {
+                                    if(refValue.current.value === '') {
+                                        setFocused(false)
+                                    }
+                                }
+                            }
+                            className="
+                                outline-none 
+                                relative 
+                                bg-transparent	
+                                w-full 
+                                border-0
+                                text-md
+                                py-2
+                                pl-2
+                                z-1
+                            " 
+                            ref={refValue} 
+                            name={name} 
+                            defaultValue={defaultValue} 
+                            decimalsLimit={decimalsLimit}
+                            prefix={prefix}
+                             />
+                    }
 
                 {
                     mask &&
