@@ -6,8 +6,8 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 const Grid: React.FC<InputProps> =  ({ titles, children, loading }) => {
     return (
-        <div className="border border border-gray-200 rounded w-full overflow-hidden shadow">
-           <table className="min-w-full divide-y divide-gray-200">
+        <div className="overflow-hidden rounded w-full border">
+           <table className="w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
                     {
@@ -86,7 +86,7 @@ export { Td }
 
 const Tr:React.FC<InputHTMLAttributes<HTMLInputElement> | any> = ({children, className, ...props}) => {
     return (
-        <tr className={`hover:bg-gray-200 ${className || ''}`} {...props}>
+        <tr className={`text-sm lg:text-lg hover:bg-gray-200 ${className || ''}`} {...props}>
             {children}
         </tr>
     )
@@ -101,7 +101,7 @@ interface HeaderProps extends InputHTMLAttributes<HTMLInputElement> {
 const Header:React.FC<HeaderProps> = ({title, children}) => {
     return (
         <header className="flex w-full justify-between flex-col mb-4">
-            <h1 className="text-2xl font-bold">{title}</h1>
+            <h1 className="text-2xl font-bold text-gray-700">{title}</h1>
             <div className="flex gap-2 mt-2">
                 {children} 
             </div>
@@ -110,3 +110,13 @@ const Header:React.FC<HeaderProps> = ({title, children}) => {
 }
 
 export { Header }
+
+const Container: React.FC = ({children, ...props}) => {
+    return (
+        <main className="w-full flex justify-center py-8 min-h-screen h-full bg-gray-100" {...props}>
+            {children}
+        </main>
+    )
+}
+
+export { Container }

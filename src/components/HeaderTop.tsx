@@ -6,20 +6,25 @@ import {MdArrowBack} from 'react-icons/md'
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     modulo: string
     backUrl: string
+    noBack?: boolean
+    maxSize?: string
 }
 
-const HeaderTop: React.FC<InputProps> = ({ modulo, backUrl }) => {
+const HeaderTop: React.FC<InputProps> = ({ modulo, backUrl, noBack, maxSize }) => {
     
     const history = useHistory()
 
     return (
-        <header className="top-0 left-0 w-full h-16 bg-white border-b-2 flex items-center justify-center">
-            <div className="w-full max-w-6xl flex justify-between">
+        <header className="px-4 lg:px-0 top-0 left-0 w-full h-16 bg-white border-b-2 flex items-center justify-center">
+            <div className={`w-full ${(maxSize) ? `max-w-${maxSize}` : 'max-w-6xl' } flex justify-between`}>
                 <div className="flex gap-2">
-                    <button onClick={ ()=> history.goBack()} className="flex items-center">
-                        <MdArrowBack className="text-xl"/>
-                    </button>
-                    <h4 className="flex text-lg font-bold pl-2 items-center">
+                    {
+                        !noBack &&
+                        <button onClick={ ()=> history.goBack()} className="flex items-center">
+                            <MdArrowBack className="text-xl"/>
+                        </button>
+                    }
+                    <h4 className="flex text-lg font-bold items-center">
                         {modulo}
                     </h4>
                 </div>
