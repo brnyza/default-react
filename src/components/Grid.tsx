@@ -1,12 +1,62 @@
 import { InputHTMLAttributes } from "react"
+
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     titles: string[]
     loading?: boolean
 }
 
+const NewGrid: React.FC<InputProps> = ({ titles, children, loading }) => {
+
+    function createData(
+        name: string,
+        calories: number,
+        fat: number,
+        carbs: number,
+        protein: number,
+      ) {
+        return { name, calories, fat, carbs, protein };
+      }
+      
+    const rows = [
+    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+    createData('Eclair', 262, 16.0, 24, 6.0),
+    createData('Cupcake', 305, 3.7, 67, 4.3),
+    createData('Gingerbread', 356, 16.0, 49, 3.9),
+    ];
+
+    return (
+        <TableContainer component={Paper}>
+            <Table size="small" aria-label="customized table">
+                <TableHead className="bg-gray-200">
+                    <TableRow>
+                        { titles.map( item => {
+                            return <TableCell sortDirection={false} className="uppercase font-bold">{item}</TableCell>
+                        })}
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {children}
+                </TableBody>
+            </Table>
+        </TableContainer>
+
+    )
+}
+
+export { NewGrid }
+
 const Grid: React.FC<InputProps> =  ({ titles, children, loading }) => {
     return (
-        <div className="overflow-hidden rounded w-full border">
+        <div className="overflow-y-hidden rounded w-full border overflow-x-scroll sm:hidden-scroll">
            <table className="w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
@@ -76,9 +126,9 @@ export { Grid }
 
 const Td:React.FC<InputHTMLAttributes<HTMLInputElement> | any> = ({children, className,...props}) => {
     return (
-        <td className={`pl-3 py-3 ${className}`} {...props}>
+        <TableCell  {...props}>
             {children}
-        </td>
+        </TableCell>
     )
 }
 
@@ -86,9 +136,9 @@ export { Td }
 
 const Tr:React.FC<InputHTMLAttributes<HTMLInputElement> | any> = ({children, className, ...props}) => {
     return (
-        <tr className={`text-sm lg:text-lg hover:bg-gray-200 ${className || ''}`} {...props}>
+        <TableRow hover sx={{ '&:last-child td, &:last-child th': { border: 0 } }}  {...props}>
             {children}
-        </tr>
+        </TableRow>
     )
 }
 
@@ -113,7 +163,7 @@ export { Header }
 
 const Container: React.FC = ({children, ...props}) => {
     return (
-        <main className="w-full flex justify-center py-8 min-h-screen h-full bg-gray-100" {...props}>
+        <main className="w-full flex justify-center py-8 min-h-screen h-full bg-gray-100 px-4" {...props}>
             {children}
         </main>
     )

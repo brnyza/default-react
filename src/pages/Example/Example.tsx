@@ -1,5 +1,6 @@
+import Table from "../../components/Table"
 import { BtnNovo, Button } from "../../components/Button"
-import { Grid, Header, Td } from "../../components/Grid"
+import { Grid, NewGrid, Header, Td, Tr } from "../../components/Grid"
 
 const Example: React.FC = () => {
 
@@ -15,15 +16,8 @@ const Example: React.FC = () => {
            <Header title="Grid teste">
              <BtnNovo/>
            </Header>
-            <Grid titles={['Nome', 'Função', 'Modulo']}>
-                { dados.map( dado => (
-                  <tr>
-                    <Td>{dado.nome}</Td>
-                    <Td>{dado.funcao}</Td>
-                    <Td>{dado.modulo}</Td>
-                  </tr>
-                ))}
-            </Grid>
+           <Table />
+          
         </div>
     </main>
   )
