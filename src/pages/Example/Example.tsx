@@ -1,6 +1,6 @@
 import Table from "../../components/Table"
 import { BtnNovo, Button } from "../../components/Button"
-import { Grid, NewGrid, Header, Td, Tr } from "../../components/Grid"
+import { Grid, Header, Td, Tr } from "../../components/Grid"
 
 const Example: React.FC = () => {
 
