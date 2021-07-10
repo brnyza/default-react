@@ -9,7 +9,7 @@ const Button: React.FC<any> = ({children, className, noStyle, hint, ...props}) =
   return (
     <div 
       className={` 
-        ${ !noStyle ? 'bg-red-500 text-white w-24 h-10 rounded' : ' ' } flex 
+        ${ !noStyle ? 'bg-red-500 text-white px-4 h-10 rounded' : ' ' } flex 
         justify-center items-center 
         cursor-pointer relative ${className}`} 
       {...props}
